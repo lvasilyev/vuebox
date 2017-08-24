@@ -11,9 +11,14 @@ const vm = new Vue({
             this.greeting = '';
         }
     },
+    computed: {
+        reverseText() {
+            return this.greeting.split('').reverse().join('');
+        }
+    },
     filters: {
-        reverseText(value) {
-            return value.split('').reverse().join('');
+        upperCase(value) {
+            return value.toUpperCase();
         }
     }
 });
