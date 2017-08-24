@@ -10,9 +10,9 @@
 </head>
 <body>
     <div id="app">
-        <h1>{{greeting}}</h1>
+        <h1>{{greeting | reverseText}}</h1>
         <input type="text" placeholder="Type here..." 
-            @input="greetMe" 
+            v-model="greeting"
             @keyup.esc="clearOut">
     </div>
     

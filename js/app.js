@@ -7,11 +7,13 @@ const vm = new Vue({
         }
     },
     methods: {
-        greetMe() {
-            this.greeting = `Hello! ${event.target.value}`;
-        },
         clearOut() {
-            event.target.value = '';
+            this.greeting = '';
+        }
+    },
+    filters: {
+        reverseText(value) {
+            return value.split('').reverse().join('');
         }
     }
 });
