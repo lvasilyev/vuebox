@@ -3,7 +3,7 @@ const vm = new Vue({
     el: '#app',
     data() {
         return {
-            greeting: 'Hello!'
+            greeting: ''
         }
     },
     methods: {
@@ -19,6 +19,9 @@ const vm = new Vue({
     filters: {
         upperCase(value) {
             return value.toUpperCase();
+        },
+        greet(value) {
+            return `Hello! ${value}`;
         }
     }
 });

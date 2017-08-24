@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="app">
-        <h1>{{reverseText | upperCase}}</h1>
+        <h1>{{reverseText | greet | upperCase}}</h1>
         <input type="text" placeholder="Type here..." 
             v-model="greeting"
             @keyup.esc="clearOut">
