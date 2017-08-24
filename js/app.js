@@ -5,7 +5,13 @@ const vm = new Vue({
         return {
             greeting: 'Hello!'
         }
+    },
+    methods: {
+        greetMe() {
+            this.greeting = `Hello! ${event.target.value}`;
+        },
+        clearOut() {
+            event.target.value = '';
+        }
     }
 });
-
-vm.greeting = "Hey there!";
