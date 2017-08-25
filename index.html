@@ -9,7 +9,26 @@
     <script src="https://unpkg.com/vue"></script>
 </head>
 <body>
-    <div id="app"></div>
+    <div id="app">
+
+        <login-dialog-component inline-template>
+            <div id="login-dialog">
+                <div id="login-title">{{ title }}</div>
+                    <div class="input-holder">
+                        <input type="text" placeholder="E-Mail">
+                    </div>
+                    <div class="input-holder">
+                        <input type="password" placeholder="Password">
+                    </div>
+                    <div class="input-holder">
+                        <a href="#" id="signinBtn">{{buttonText}}</a>
+                        <div class="text-links">
+                            <a href="#" id="signupBtn" @click="signupTitle">Signup for a free account!</a>
+                        </div>
+                    </div>
+            </div>
+        </login-dialog-component>
+    </div>
     
     <script src="js/app.js"></script>
 </body>
