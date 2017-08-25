@@ -1,27 +1,3 @@
 // Your VueJS code goes here
-const vm = new Vue({
-    el: '#app',
-    data() {
-        return {
-            greeting: ''
-        }
-    },
-    methods: {
-        clearOut() {
-            this.greeting = '';
-        }
-    },
-    computed: {
-        reverseText() {
-            return this.greeting.split('').reverse().join('');
-        }
-    },
-    filters: {
-        upperCase(value) {
-            return value.toUpperCase();
-        },
-        greet(value) {
-            return `Hello! ${value}`;
-        }
-    }
-});
+let template = '<div id="login-dialog"><div id="login-title">{{ title }}</div><div class="input-holder"><input type="text" placeholder="E-Mail"></div><div class="input-holder"><input type="password" placeholder="Password"></div><div class="input-holder"><a href="#" id="signinBtn">Sign-in</a><div class="text-links"><a href="#" id="signupBtn">Signup for a free account!</a></div></div></div>';
+
