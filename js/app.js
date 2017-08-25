@@ -12,9 +12,12 @@ new Vue({
         rerender() {
             this.$forceUpdate();
         },
+        getRandom() {
+            return parseInt(Math.random() * 255);
+        },
         backgroundColor() {
             return {
-                'background-color': `rgb(${parseInt(Math.random() * 255)}, ${parseInt(Math.random() * 255)}, ${parseInt(Math.random() * 255)})`
+                'background-color': `rgb(${this.getRandom()}, ${this.getRandom()}, ${this.getRandom()})`
             }
         }
     }
