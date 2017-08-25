@@ -4,18 +4,13 @@ new Vue({
     template: `
         <div id="number-box">
             <ul>
-                <li v-for="x in 30" :style="backgroundColor()" @click="rerender">{{x < 10 ? ('0' + x) : x}}</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
             </ul>
         </div>
-    `,
-    methods: {
-        rerender() {
-            this.$forceUpdate();
-        },
-        backgroundColor() {
-            return {
-                'background-color': `rgb(${parseInt(Math.random() * 255)}, ${parseInt(Math.random() * 255)}, ${parseInt(Math.random() * 255)})`
-            }
-        }
-    }
+    `
 });
