@@ -13,5 +13,68 @@ new Vue({
             this.buttonText = 'Signup';
         }
     },
-    template: '#login-dialog-component'
+    render(createElement) {
+        return createElement('div', {
+            attrs: {
+                id: 'login-dialog'
+            }
+        }, [
+            createElement('div', {
+                attrs: {
+                    id: 'login-title'
+                }
+            }, [ this.title ]),
+            createElement('div', {
+                attrs: {
+                    class: 'input-holder'
+                }
+            }, [
+                createElement('input', {
+                    attrs: {
+                        type: 'text',
+                        placeholder: 'E-Mail'
+                    }
+                })
+            ]),
+            createElement('div', {
+                attrs: {
+                    class: 'input-holder'
+                }
+            }, [
+                createElement('input', {
+                    attrs: {
+                        type: 'password',
+                        placeholder: 'Password'
+                    }
+                })
+            ]),
+            createElement('div', {
+                attrs: {
+                    class: 'input-holder'
+                }
+            }, [
+                createElement('a', {
+                    attrs: {
+                        href: '#',
+                        id: 'signinBtn'
+                    }
+                }, [ this.buttonText ]),
+                createElement('div', {
+                    attrs: {
+                        class: 'text-links'
+                    }
+                }, [
+                    createElement('a', {
+                        attrs: {
+                            href: '#',
+                            id: 'signupBtn'
+                        },
+                        on: {
+                            click: this.signupTitle
+                        }
+                    }, [ 'Signup for a free account!' ])
+                ])
+            ])
+        ])
+    }
 });
