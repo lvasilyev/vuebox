@@ -15,7 +15,6 @@
     overflow: hidden;
     padding: 10px;
     box-sizing: border-box;
-    cursor: pointer;
 }
 
 #number-box ul {
@@ -35,4 +34,5 @@
     margin: 2px;
     font-size: 30px;
     border-radius: 5px;
+    cursor: pointer;
 }
