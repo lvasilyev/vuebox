@@ -23,10 +23,6 @@ const products = [
         product: "Typhoo Treasures Green Tea",
         cost: 5,
         quantity: 10
-    }, {
-        product: "Quaker Oats",
-        cost: 30,
-        quantity: 2
     }
 ];
 // Your VueJS code goes here
