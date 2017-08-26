@@ -23,13 +23,38 @@ const products = [
         product: "Typhoo Treasures Green Tea",
         cost: 5,
         quantity: 10
-    }, {
-        product: "Quaker Oats",
-        cost: 30,
-        quantity: 2
     }
 ];
 // Your VueJS code goes here
 new Vue({
-    el: '#app'
+    el: '#app',
+    data() {
+        return {
+            cart: products,
+            total: 0
+        }
+    },
+    template: `
+    <div id="cart">
+        <h2>Shopping List</h2>
+        <ol id="list">
+            <li v-for="item in cart">
+                <span class="product">{{item.product}}</span>
+                <span class="quantity">{{item.quantity}}</span>
+                <span class="cost">{{item.quantity * item.cost}}</span>
+            </li>
+        </ol>
+
+        <div id="totals">
+            Total = USD {{totals}}
+        </div>
+    </div>
+    `,
+    computed: {
+        totals() {
+            return this.cart.reduce(function(total, item) {
+                return total + (item.cost * item.quantity);
+            }, 0);
+        }
+    }
 });
