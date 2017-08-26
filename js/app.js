@@ -35,20 +35,20 @@ new Vue({
         }
     },
     template: `
-    <div id="cart">
-        <h2>Shopping List</h2>
-        <ol id="list">
-            <li v-for="item in cart">
-                <span class="product">{{item.product}}</span>
-                <span class="quantity">{{item.quantity}}</span>
-                <span class="cost">{{item.quantity * item.cost}}</span>
-            </li>
-        </ol>
+        <div id="cart">
+            <h2>Shopping List</h2>
+            <ol id="list">
+                <li v-for="item in cart">
+                    <span class="product">{{item.product}}</span>
+                    <span class="quantity">{{item.quantity}}</span>
+                    <span class="cost">{{item.quantity * item.cost}}</span>
+                </li>
+            </ol>
 
-        <div id="totals">
-            Total = USD {{totals}}
+            <div id="totals">
+                Total = USD {{totals}}
+            </div>
         </div>
-    </div>
     `,
     computed: {
         totals() {
