@@ -2,10 +2,10 @@
     font-family: sans-serif;
 }
 
-#number-box {
+#cart {
     position: absolute;
     border: 1px solid;
-    width: 498px;
+    width: 400px;
     height: 450px;
     top: 0;
     bottom: 0;
@@ -15,24 +15,4 @@
     overflow: hidden;
     padding: 10px;
     box-sizing: border-box;
-    cursor: pointer;
-}
-
-#number-box ul {
-    padding: 0;
-    height: 400px;
-}
-
-#number-box li {
-    position: relative;
-    list-style: none;
-    float: left;
-    width: 35px;
-    height: 35px;
-    text-align: center;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.3);
-    margin: 2px;
-    font-size: 30px;
-    border-radius: 5px;
 }
