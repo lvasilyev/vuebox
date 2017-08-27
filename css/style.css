@@ -2,7 +2,7 @@
     font-family: sans-serif;
 }
 
-#app {
+.add-products-container {
     position: absolute;
     border: 1px solid #DCDCDC;
     background-color: #F1F1F1;
@@ -22,6 +22,7 @@
     background-color: #FFF;
     border: 1px solid;
     overflow: hidden;
+    margin-bottom: 2px;
 }
 
 .add-products ul {
@@ -62,5 +63,6 @@
     font-size: 12px;
     outline: none;
     border: none;
+    margin: 4px;
     background-color: transparent;
 }
