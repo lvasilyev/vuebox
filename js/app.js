@@ -1,5 +1,6 @@
 // Your VueJS code goes here
-Vue.component('product-box', {
+new Vue({
+    el: '#app',
     data() {
         return {
             product: '',
@@ -18,6 +19,7 @@ Vue.component('product-box', {
         }
     },
     template: `
+        <div class="add-products-container">
             <div class="add-products">
                 <ul>
                     <li class="product" v-for="(item, key) in cart">
@@ -27,18 +29,6 @@ Vue.component('product-box', {
                     <li class="search-box"><input type="text" placeholder="Add Products..." v-model="product" @keyup.enter="addProduct"></li>
                 </ul>
             </div>
+        </div>
     `
-});
-
-new Vue({
-    el: '#app',
-    data() {
-        return {
-            email: []
-        }
-    },
-    template: `
-        <div class="add-products-container">
-            <product-box />
-        </div>`
 });
