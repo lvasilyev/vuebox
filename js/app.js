@@ -2,7 +2,7 @@
 const InputField = {
     name: 'input-field',
     props: ['value'],
-    template: '<input type="number" min="0" :value="value" @keyup="update">',
+    template: '<input type="number" min="0" :value="value" @change="update" @keyup="update">',
     methods: {
         update() {
             this.$emit('update:value', Number(event.target.value));
@@ -13,9 +13,9 @@ const InputField = {
 const RangeSlider = {
     name: 'range-slider',
     props: ['value'],
-    template: '<input type="range" min="0" max="100" :value="value" @input="onInput">',
+    template: '<input type="range" min="0" max="100" :value="value" @input="update">',
     methods: {
-        onInput() {
+        update() {
             this.$emit('update:value', Number(event.target.value));
         }
     }
