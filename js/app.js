@@ -52,7 +52,7 @@ new Vue({
     el: '#app',
     data() {
         return {
-            restaurants: dataSet
+            places: dataSet
         }
     },
     components: {
@@ -61,9 +61,9 @@ new Vue({
     template: `
         <div id="list-container">
             <list-item 
-                v-for="x in restaurants" 
-                :key="x.id" 
-                :list-data="x" 
+                v-for="place in places" 
+                :key="place.id" 
+                :list-data="place" 
             />
         </div>
     `
