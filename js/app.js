@@ -13,7 +13,7 @@ const InputField = {
 const RangeSlider = {
     name: 'range-slider',
     props: ['value'],
-    template: `<input type="range" min="0" max="100" :value="value" @input="onInput">`,
+    template: '<input type="range" min="0" max="100" :value="value" @input="onInput">',
     methods: {
         onInput() {
             this.$emit('update:value', Number(event.target.value));
@@ -40,7 +40,7 @@ const App = {
         </div>`
 }
 
-const vm = new Vue({
+new Vue({
     el: '#app',
     components: {
         App
