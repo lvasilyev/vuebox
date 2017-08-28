@@ -34,36 +34,17 @@ const RestaurantType = {
     template: `<div class="restaurant-type">{{type.join(' | ')}}</div>`
 }
 
-const RestaurantRating = {
-    name: 'restaurant-rating',
-    props: ['rating'],
-    computed: {
-        ratingLabel() {
-            if(this.rating < 1.5) {
-                return 'Bad';
-            } else if(this.rating >= 1.5 && this.rating < 4.0) {
-                return 'Good';
-            } else {
-                return 'Awesome';
-            }
-        }
-    },
-    template: `<div class="restaurant-rating">{{ratingLabel}}</div>`
-}
-
 const ListItem = {
     name: 'list-item',
-    props: ['listdata'],
+    props: ['listData'],
     components: {
         RestaurantName,
-        RestaurantType,
-        RestaurantRating
+        RestaurantType
     },
     template: 
         `<div class="list-item">
-            <restaurant-name :name="listdata.name" />
-            <restaurant-type :type="listdata.type" />
-            <restaurant-rating :rating="listdata.rating" />
+            <restaurant-name :name="listData.name" />
+            <restaurant-type :type="listData.type" />
          </div>`
 }
 
@@ -79,7 +60,7 @@ new Vue({
     },
     template: `
         <div id="list-container">
-            <list-item v-for="x in restaurants" v-bind:key="x.id" :listdata="x" />
+            <list-item v-for="x in restaurants" v-bind:key="x.id" :list-data="x" />
         </div>
     `
 });

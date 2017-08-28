@@ -35,15 +35,7 @@
     position: absolute;
     font-size: 12px;
     left: 20px;
-    top: 38px;
+    top: 40px;
     color: #00680F;
 }
 
-.restaurant-rating {
-    position: absolute;
-    font-size: 20px;
-    font-weight: lighter;
-    top: 18px;
-    right: 10px;
-    color: rgba(200, 0, 0, 1);
-}
