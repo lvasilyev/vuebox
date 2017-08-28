@@ -22,11 +22,22 @@ const places = [
     }
 ];
 // Your VueJS code goes here
-const RestaurantName = {
-    name: 'restaurant-name',
-    props: ['name'],
-    template: `<div class="restaurant-name">{{name}}</div>`
-}
+// const RestaurantName = {
+//     name: 'restaurant-name',
+//     props: ['name'],
+//     template: `<div class="restaurant-name">{{name}}</div>`
+// }
+
+Vue.component('restaurant-name', {
+    functional: true,
+    render(createElement, context) {
+        return createElement('div', {
+            attrs: {
+                class: 'restaurant-name'
+            }
+        }, context.props.name);
+    }
+});
 
 const RestaurantType = {
     name: 'restaurant-type',
@@ -38,7 +49,6 @@ const ListItem = {
     name: 'list-item',
     props: ['listData'],
     components: {
-        RestaurantName,
         RestaurantType
     },
     template: 
