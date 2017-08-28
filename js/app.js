@@ -60,7 +60,11 @@ new Vue({
     },
     template: `
         <div id="list-container">
-            <list-item v-for="x in restaurants" v-bind:key="x.id" :list-data="x" />
+            <list-item 
+                v-for="x in restaurants" 
+                :key="x.id" 
+                :list-data="x" 
+            />
         </div>
     `
 });
