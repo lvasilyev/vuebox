@@ -1,4 +1,4 @@
-const dataSet = [
+const places = [
     {
         id: 1,
         name: 'Mocha',
@@ -52,7 +52,7 @@ new Vue({
     el: '#app',
     data() {
         return {
-            places: dataSet
+            places
         }
     },
     components: {
