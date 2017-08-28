@@ -41,9 +41,9 @@
 
 .restaurant-rating {
     position: absolute;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: lighter;
-    top: 12px;
+    top: 18px;
     right: 10px;
     color: rgba(200, 0, 0, 1);
 }
