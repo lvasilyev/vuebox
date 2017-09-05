@@ -1,6 +1,6 @@
 // Your VueJS code goes here
-new Vue({
-    el: '#app',
+const loginDialogComponent = {
+    name: 'login-dialog-component',
     data() {
         return {
             title: 'Sign-in to your account',
@@ -23,7 +23,7 @@ new Vue({
                 attrs: {
                     id: 'login-title'
                 }
-            }, [ this.title ]),
+            }, [this.title]),
             createElement('div', {
                 attrs: {
                     class: 'input-holder'
@@ -72,9 +72,17 @@ new Vue({
                         on: {
                             click: this.signupTitle
                         }
-                    }, [ 'Signup for a free account!' ])
+                    }, [ 'Signup for a free account' ])
                 ])
             ])
-        ])
+        ]);
     }
+};
+
+new Vue({
+    el: '#app',
+    components: {
+        loginDialogComponent
+    },
+    template: '<login-dialog-component></login-dialog-component>'
 });
