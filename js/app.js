@@ -1,6 +1,5 @@
 // Your VueJS code goes here
-new Vue({
-    el: '#app',
+Vue.component('login-dialog-component', {
     data() {
         return {
             title: 'Sign-in to your account',
@@ -14,4 +13,9 @@ new Vue({
         }
     },
     template: '#login-dialog-component'
+});
+
+new Vue({
+    el: '#app',
+    template: '<login-dialog-component />'
 });
