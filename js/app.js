@@ -12,14 +12,16 @@ const ListWidget = {
             if(this.product !== '') {
                 this.products.push(this.product);
                 this.product = '';
-                this.syncCart();
+                //this.syncCart();
             }
         },
         removeItem(key) {
             this.products.splice(key, 1);
-            this.syncCart();
-        },
-        syncCart() {
+            //this.syncCart();
+        }
+    },
+    watch: {
+        products: function() {
             this.$emit('input', this.products);
         }
     },
