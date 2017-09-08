@@ -4,12 +4,12 @@ new Vue({
     template: `
         <div id="number-box">
             <ul>
-                <li v-for="x in 30" :style="backgroundColor()" @click="rerender">{{x < 10 ? ('0' + x) : x}}</li>
+                <li v-for="x in 30" :style="backgroundColor()" @click="reRender">{{x < 10 ? ('0' + x) : x}}</li>
             </ul>
         </div>
     `,
     methods: {
-        rerender() {
+        reRender() {
             this.$forceUpdate();
         },
         getRandom() {
