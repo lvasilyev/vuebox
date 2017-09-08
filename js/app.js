@@ -26,8 +26,22 @@ const products = [
     }
 ];
 // Your VueJS code goes here
-new Vue({
-    el: '#app',
+
+const ListItem = {
+    props: ['item'],
+    template: `
+    <span>
+        <span class="product">{{item.product}}</span>
+        <span class="quantity">{{item.quantity}}</span>
+        <span class="cost">{{item.quantity * item.cost}}</span>
+    </span>
+    `
+}
+
+const App = {
+    components: {
+        ListItem
+    },
     data() {
         return {
             cart: products,
@@ -39,9 +53,7 @@ new Vue({
             <h2>Shopping List</h2>
             <ol id="list">
                 <li v-for="item in cart">
-                    <span class="product">{{item.product}}</span>
-                    <span class="quantity">{{item.quantity}}</span>
-                    <span class="cost">{{item.quantity * item.cost}}</span>
+                    <ListItem :item="item" />
                 </li>
             </ol>
 
@@ -57,4 +69,12 @@ new Vue({
             }, 0);
         }
     }
+};
+
+new Vue({
+    el: '#app',
+    components: {
+        App
+    },
+    template: '<App />'
 });
