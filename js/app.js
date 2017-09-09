@@ -1,5 +1,6 @@
 // Your VueJS code goes here
 const ListWidget = {
+    name: 'list-widget',
     props: ['value'],
     data() {
         return {
@@ -51,7 +52,7 @@ new Vue({
     },
     template: `
         <div class="add-products-container">
-            <ListWidget v-model="cart" />
+            <list-widget v-model="cart" />
             <ol class="products-list">
                 <li v-for="item in cart">{{item}}</li>
             </ol>
