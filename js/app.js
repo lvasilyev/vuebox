@@ -1,11 +1,11 @@
 // Your VueJS code goes here
 const ListWidget = {
     name: 'list-widget',
-    props: ['value'],
+    props: ['cart'],
     data() {
         return {
             product: '',
-            products: this.value
+            products: this.cart
         }
     },
     methods: {
@@ -13,17 +13,10 @@ const ListWidget = {
             if(this.product !== '') {
                 this.products.push(this.product);
                 this.product = '';
-                //this.syncCart();
             }
         },
         removeItem(key) {
             this.products.splice(key, 1);
-            //this.syncCart();
-        }
-    },
-    watch: {
-        products: function() {
-            this.$emit('input', this.products);
         }
     },
     template: `
@@ -52,7 +45,7 @@ new Vue({
     },
     template: `
         <div class="add-products-container">
-            <list-widget v-model="cart" />
+            <list-widget :cart="cart" />
             <ol class="products-list">
                 <li v-for="item in cart">{{item}}</li>
             </ol>
