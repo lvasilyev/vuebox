@@ -22,7 +22,7 @@ const ListWidget = {
     template: `
     <div class="add-products">
         <ul>
-            <li class="product" v-for="(item, key) in products">
+            <li class="product" v-for="(item, key) in products" :key="key">
                 <span class="title">{{item}}</span>
                 <a href="#" class="remove-btn" @click.prevent="removeItem(key)">X</a>
             </li>
