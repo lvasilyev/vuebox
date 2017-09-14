@@ -32,9 +32,8 @@ const ListWidget = {
     `
 }
 
-
-new Vue({
-    el: '#app',
+const App = {
+    name: 'app',
     components: {
         ListWidget
     },
@@ -44,11 +43,19 @@ new Vue({
         }
     },
     template: `
-        <div class="add-products-container">
-            <list-widget :cart="cart" />
-            <ol class="products-list">
-                <li v-for="item in cart">{{item}}</li>
-            </ol>
-        </div>
+    <div class="add-products-container">
+        <list-widget :cart="cart" />
+        <ol class="products-list">
+            <li v-for="item in cart">{{item}}</li>
+        </ol>
+    </div>
     `
+}
+
+new Vue({
+    el: '#app',
+    components: {
+        App
+    },
+    template: '<app />'
 });
