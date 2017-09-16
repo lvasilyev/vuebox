@@ -2,79 +2,59 @@ const places = [
     {
         id: 1,
         name: 'Mocha',
-        type: ['American', 'Mexican', 'Patisserie', 'Cafe'],
-        rating: 4.3
+        rating: 4
     }, {
         id: 2,
         name: 'Playground',
-        type: ['American', 'Italian', 'Indian'],
-        rating: 1.2
+        rating: 1
     }, {
         id: 3,
         name: 'MTV Flyp',
-        type: ['Cafe', 'Pub'],
-        rating: 3.0
+        rating: 3
     }, {
         id: 5,
         name: 'F Bar',
-        type: ['Bar', 'Cafe', 'American'],
-        rating: 4.0
+        rating: 4
     }
 ];
-// Your VueJS code goes here
-// const RestaurantName = {
-//     name: 'restaurant-name',
-//     props: ['name'],
-//     template: `<div class="restaurant-name">{{name}}</div>`
-// }
 
-Vue.component('restaurant-name', {
-    functional: true,
-    render(createElement, context) {
-        return createElement('div', {
-            attrs: {
-                class: 'restaurant-name'
-            }
-        }, context.props.name);
-    }
-});
-
-const RestaurantType = {
-    name: 'restaurant-type',
-    props: ['type'],
-    template: `<div class="restaurant-type">{{type.join(' | ')}}</div>`
+const RatingMeter = {
+    name: 'rating-meter',
+    props: ['value'],
+    template: `
+    <div class="rating-meter">
+        <div class="rating-block" v-for="x in value" />
+    </div>
+    `
 }
 
 const ListItem = {
     name: 'list-item',
-    props: ['listData'],
-    components: {
-        RestaurantType
-    },
+    props: ['place'],
+    components: { RatingMeter },
     template: 
-        `<div class="list-item">
-            <restaurant-name :name="listData.name" />
-            <restaurant-type :type="listData.type" />
-         </div>`
+    `<div class="list-item">
+        <div class="restaurant-name">{{place.name}}</div>
+        <rating-meter :value="place.rating" />
+    </div>`
 }
 
-new Vue({
-    el: '#app',
+const App = {
+    name: 'app',
     data() {
         return {
             places
         }
     },
-    components: {
-        ListItem
-    },
-    template: `
-        <div id="list-container">
-            <list-item 
-                v-for="place in places" 
-                :key="place.id" 
-                :list-data="place" 
-            />
-        </div>
-    `
+    components: { ListItem },
+    template: 
+    `<div id="list-container">
+        <list-item v-for="place in places" :key="place.id" :place="place" />
+    </div>`
+}
+
+new Vue({
+    el: '#app',
+    components: { App },
+    template: '<app />'
 });

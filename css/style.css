@@ -5,7 +5,7 @@
 #list-container {
     position: absolute;
     width: 400px;
-    height: 220px;
+    height: 291px;
     border: 1px solid #ACACAC;
     top: 0px;
     left: 0px;
@@ -27,15 +27,25 @@
     position: absolute;
     font-size: 25px;
     font-weight: lighter;
-    top: 10px;
+    top: 17px;
     left: 20px;
 }
 
-.restaurant-type {
+.rating-meter {
     position: absolute;
-    font-size: 12px;
-    left: 20px;
-    top: 40px;
-    color: #00680F;
+    border: 1px solid black;
+    height: 22px;
+    width: 130px;
+    top: 17px;
+    right: 20px;
 }
 
+.rating-block {
+    position: relative;
+    width: 24px;
+    height: 20px;
+    margin: 1px;
+    display:block;
+    float: left;
+    background: green;
+}
