@@ -1,8 +1,4 @@
 // Your VueJS code goes here
-Vue.component('sep', {
-    template: '<div class="separator" />'
-});
-
 Vue.component('input-field', {
     props: ['name', 'value'],
     data() {
@@ -163,17 +159,17 @@ const App = {
     template: `
     <div>
         <input-field name="Name" v-model="customer.name" />
-        <sep />
+            <div class="separator" />
         <input-field name="Email" v-model="customer.email" />
-        <sep />
+            <div class="separator" />
         <input-field name="Phone" v-model="customer.phone" />
-        <sep />
+            <div class="separator" />
         <multi-option :config="config.typeOfCar" v-model="customer.carType" />
-        <sep />
+            <div class="separator" />
         <multi-option :config="config.contactMode" v-model="customer.contactMode" />
-        <sep />
+            <div class="separator" />
         <input-field name="Car Model" v-model="customer.carmodel" />
-        <sep />
+            <div class="separator" />
         <list-option :config="config.yearOfPurchase" v-model="customer.yearOfPurchase" />
         <div class="form-field" v-if="validate">
             <a href="#" id="sendBtn">Request a Quote!</a>
