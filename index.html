@@ -9,7 +9,34 @@
     <script src="https://unpkg.com/vue"></script>
 </head>
 <body>
-    <div id="app"></div>
+    <div id="app">
+        <div id="container">
+            <div class="form-field">
+                <input type="text" placeholder="Name">
+            </div>
+            <div class="separator"></div>
+            <div class="form-field">
+                <input type="email" placeholder="Email">
+            </div>
+            <div class="separator"></div>
+            <div class="form-field">
+                <h4>Type of car</h4>
+                <div class="radio-option">
+                    <div class="label">Sedan</div>
+                    <div class="field"><input type="radio" name="cartype" value="sedan" checked></div>
+                </div>
+                <div class="radio-option">
+                    <div class="label">Micro</div>
+                    <div class="field"><input type="radio" name="cartype" value="micro"></div>
+                </div>
+                <div class="radio-option">
+                    <div class="label">Saloon</div>
+                    <div class="field"><input type="radio" name="cartype" value="saloon"></div>
+                </div>
+            </div>
+            <div class="separator"></div>
+        </div>
+    </div>
     
     <script src="js/app.js"></script>
 </body>
