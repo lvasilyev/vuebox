@@ -19,6 +19,8 @@
 
 .form-field {
     position:relative;
+    display: inline-block;
+    overflow: hidden;
 }
 
 .separator {
@@ -29,27 +31,29 @@
 
 .form-field h4 {
     position: relative;
-    font-weight: normal;
-    font-size: 14px;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 16px;
     left: 5px;
-    display: flex;
 }
 
-.radio-option {
+.multi-option {
     position: relative;
     width: 50px;
     float: left;
     /* border: 1px solid; */
     margin-right: 10px;
     margin-left: 5px;
+    margin-bottom: 5px;
 }
 
-.radio-option .label {
+.multi-option .label {
     text-align: center;
     font-size: 11px;
+    font-weight: bold;
 }
 
-.radio-option .field {
+.multi-option .field {
     position:relative;
     left: 10px;
 }
