@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,15 +9,21 @@
     <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/vue"></script>
 </head>
+
 <body>
     <div id="app">
         <div id="container">
+            <div class="title-holder">Sales Quote Request</div>
             <div class="form-field">
                 <input type="text" placeholder="Name">
             </div>
             <div class="separator"></div>
             <div class="form-field">
                 <input type="email" placeholder="Email">
+            </div>
+            <div class="separator"></div>
+            <div class="form-field">
+                <input type="phone" placeholder="Phone">
             </div>
             <div class="separator"></div>
             <div class="form-field">
@@ -35,9 +42,41 @@
                 </div>
             </div>
             <div class="separator"></div>
+            <div class="form-field">
+                <h4>Contact Mode</h4>
+                <div class="multi-option">
+                    <div class="label">Phone</div>
+                    <div class="field"><input type="checkbox" name="contact_mode" value="Phone" checked></div>
+                </div>
+                <div class="multi-option">
+                    <div class="label">E-Mail</div>
+                    <div class="field"><input type="checkbox" name="contact_mode" value="Email"></div>
+                </div>
+                <div class="multi-option">
+                    <div class="label">Visit by Agent</div>
+                    <div class="field"><input type="checkbox" name="contact_mode" value="Post"></div>
+                </div>
+            </div>
+            <div class="separator"></div>
+            <div class="form-field">
+                <input type="text" placeholder="Car Model">
+            </div>
+            <div class="separator"></div>
+            <div class="form-field">
+                <select>
+                            <option selected disabled>Year of Purchase</option>   
+                            <option>1960</option>   
+                            <option>1960</option>   
+                            <option>1960</option>    
+                        </select>
+            </div>
+            <div class="form-field">
+                <a href="#" id="sendBtn">Request a Quote!</a>
+            </div>
         </div>
     </div>
-    
+
     <script src="js/app.js"></script>
 </body>
+
 </html>
