@@ -10,7 +10,7 @@ Vue.component('input-field', {
         typeFn() {
             let types = [{
                 typeName: 'text',
-                nameDict: ['Name','Address']
+                nameDict: ['Name', 'Address']
             }, {
                 typeName: 'phone',
                 nameDict: ['Phone', 'Mobile']
@@ -30,38 +30,33 @@ Vue.component('input-field', {
             }
         }
     },
-    methods: {
-        update() {
-            this.$emit('input', event.target.value);
-        }
-    },
     template: `
     <div class="form-field">
-        <input :type="typeFn" :placeholder="name" @input="update" :value="value">
-    </div>
-    `
+        <input :type="typeFn" :placeholder="name" :value="value" @input="$emit('input', $event.target.value)">
+    </div>`
 });
 
 Vue.component('multi-option', {
     props: ['config', 'value'],
     data() {
         return {
-            data: []
+            pickedValue: []
         }
     },
     watch: {
-        data: function() {
-            this.$emit('input', this.data);
+        pickedValue: function() {
+            this.$emit('input', this.pickedValue);
         }
     },
-    template: `
+    template: 
+    `
     <div class="form-field">
-        <h4>Type of car</h4>
+        <h4>{{config.name}}</h4>
         <div class="multi-option" v-for="(n, key) in config.opts" :key="key">
             <div class="label">{{n}}</div>
             <div class="field">
-                <input type="radio" :value="n" v-model="data" v-if="config.type === 'radio'">
-                <input type="checkbox" :value="n" v-model="data" v-if="config.type === 'checkbox'">
+                <input type="radio" :value="n" v-model="pickedValue" v-if="config.type === 'radio'">
+                <input type="checkbox" :value="n" v-model="pickedValue" v-else-if="config.type === 'checkbox'">
             </div>
         </div>
     </div>
@@ -73,18 +68,18 @@ Vue.component('list-option', {
     methods: {
         generateSeq() {
             let yrs = [];
-            for(let x = 1950; x <= (new Date().getFullYear()); x++) {
+            for(let x = this.config.minValue; x <= (new Date().getFullYear()); x++) {
                 yrs.push(String(x));
             }
 
             return yrs;
         }
     },
-    template:
+    template: 
     `
     <div class="form-field">
-    <select @change="$emit('input', $event.target.value)">
-            <option selected disabled>Year of Purchase</option>   
+        <select @change="$emit('input', $event.target.value)">
+            <option selected disabled>{{config.title}}</option>
             <option v-for="year in generateSeq()">{{year}}</option>
         </select>
     </div>
@@ -102,31 +97,32 @@ const App = {
                 phone: '',
                 carType: '',
                 contactMode: [],
-                carmodel: '',
+                carModel: '',
                 yearOfPurchase: ''
             },
             config: {
                 typeOfCar: {
                     type: 'radio',
-                    name: 'typeOfCar',
+                    name: 'Type of Car',
                     opts: ['Sedan', 'Saloon', 'MPV', 'SUV']
                 },
                 contactMode: {
                     type: 'checkbox',
-                    name: 'contactMode',
+                    name: 'Contact Mode',
                     opts: ['E-Mail', 'Phone', 'Post', 'Agent Visit']
                 },
                 yearOfPurchase: {
-                    title: 'Year of Purchase'
+                    title: 'Year of Purchase',
+                    minValue: 1975
                 }
             }
         }
     },
     computed: {
         validate() {
-            return this.customer.name !== '' 
-                && this.customer.email !== '' 
-                && this.customer.phone !== '' 
+            return this.customer.name !== ''
+                && this.customer.email !== ''
+                && this.customer.phone !== ''
                 && this.customer.carType !== ''
                 && this.customer.carModel !== ''
                 && this.customer.contactMode.length !== 0
@@ -135,6 +131,7 @@ const App = {
     },
     methods: {
         sendData() {
+            // Send data to the server
             console.log(this.customer);
             this.routeView = 'thanksView';
         }
@@ -147,27 +144,25 @@ const App = {
     template: `
     <div v-if="routeView === 'formView'">
         <input-field name="Name" v-model="customer.name" />
-            <div class="separator" />
+        <div class="separator" />
         <input-field name="Email" v-model="customer.email" />
-            <div class="separator" />
+        <div class="separator" />
         <input-field name="Phone" v-model="customer.phone" />
-            <div class="separator" />
-        <multi-option :config="config.typeOfCar" v-model="customer.carType" />
-            <div class="separator" />
-        <multi-option :config="config.contactMode" v-model="customer.contactMode" />
-            <div class="separator" />
-        <input-field name="Car Model" v-model="customer.carmodel" />
-            <div class="separator" />
-        <list-option :config="config.yearOfPurchase" v-model="customer.yearOfPurchase" />
-        <div class="form-field" v-if="validate">
-            <a href="#" id="sendBtn" @click="sendData">Request a Quote!</a>
+        <div class="separator" />
+        <multi-option :config="config.typeOfCar" v-model="customer.carType"/>
+        <div class="separator" />
+        <multi-option :config="config.contactMode" v-model="customer.contactMode"/>
+        <div class="separator" />
+        <input-field name="Car Model" v-model="customer.carModel" />
+        <div class="separator" />
+        <list-option :config="config.yearOfPurchase" v-model="customer.yearOfPurchase"/>
+        <div class="form-field">
+            <a href="#" id="sendBtn" @click="sendData" v-if="validate">Request a Quote!</a>
         </div>
     </div>
-    <div v-else-if="routeView === 'thanksView'" id="thankyou-dialog">Thank you for your request {{customer.name | firstname}}! We'll get back to you shortly!</div>
+    <div v-else-if="routeView === 'thanksView'" id="thankyou-dialog">Thank you for your request {{customer.name | firstname}}! We'll get back to you soon!</div>
     `
 }
-
-
 
 new Vue({
     el: '#app',
@@ -176,6 +171,5 @@ new Vue({
     `<div id="container">
         <div class="title-holder">Sales Quote Request</div>
         <app />
-    </div>
-    `
+    </div>`
 });
