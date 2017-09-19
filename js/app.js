@@ -54,11 +54,6 @@ Vue.component('multi-option', {
             this.$emit('input', this.data);
         }
     },
-    computed: {
-        yearCount(n) {
-            return n > 1960 && n <= (new Date().getFullYear());
-        }
-    },
     template: `
     <div class="form-field">
         <h4>Type of car</h4>
@@ -78,7 +73,7 @@ Vue.component('list-option', {
     methods: {
         generateSeq() {
             let yr = [];
-            for(let x = 1950; x <= 2017; x++) {
+            for(let x = 1950; x <= (new Date().getFullYear()); x++) {
                 yr.push(String(x));
             }
 
