@@ -56,7 +56,7 @@ Vue.component('multi-option', {
     },
     computed: {
         yearCount(n) {
-            return n > 1960 && n <= 2017;
+            return n > 1960 && n <= (new Date().getFullYear());
         }
     },
     template: `
