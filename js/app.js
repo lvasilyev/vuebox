@@ -72,42 +72,23 @@ Vue.component('list-option', {
     props: ['config', 'value'],
     methods: {
         generateSeq() {
-            let yr = [];
+            let yrs = [];
             for(let x = 1950; x <= (new Date().getFullYear()); x++) {
-                yr.push(String(x));
+                yrs.push(String(x));
             }
 
-            return yr;
+            return yrs;
         }
     },
-    render(h) {
-        return h('div', {
-            attrs: {
-                class: 'form-field'
-            }
-        }, [
-            h('select', {
-                domProps: {
-                    value: this.value === '' ? this.config.title : this.value
-                },
-                on: {
-                    input: () => {
-                        this.$emit('input', event.target.value);
-                    }
-                }
-            },[
-                h('option', {
-                    attrs: {
-                        selected: true,
-                        disabled: true
-                    }
-                }, [ this.config.title ]),
-                    this.generateSeq().map(i => {
-                        return h('option', i)
-                    })
-            ])
-        ]);
-    }
+    template:
+    `
+    <div class="form-field">
+    <select @change="$emit('input', $event.target.value)">
+            <option selected disabled>Year of Purchase</option>   
+            <option v-for="year in generateSeq()">{{year}}</option>
+        </select>
+    </div>
+    `
 });
 
 const App = {
