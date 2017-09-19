@@ -114,6 +114,7 @@ const App = {
     name: 'app',
     data() {
         return {
+            routeView: 'formView',
             customer: {
                 name: '',
                 email: '',
@@ -151,8 +152,19 @@ const App = {
                 && this.customer.yearOfPurchase !== ''
         }
     },
+    methods: {
+        sendData() {
+            console.log(this.customer);
+            this.routeView = 'thanksView';
+        }
+    },
+    filters: {
+        firstname(str) {
+            return str.split(/\s/)[0];
+        }
+    },
     template: `
-    <div>
+    <div v-if="routeView === 'formView'">
         <input-field name="Name" v-model="customer.name" />
             <div class="separator" />
         <input-field name="Email" v-model="customer.email" />
@@ -167,9 +179,11 @@ const App = {
             <div class="separator" />
         <list-option :config="config.yearOfPurchase" v-model="customer.yearOfPurchase" />
         <div class="form-field" v-if="validate">
-            <a href="#" id="sendBtn">Request a Quote!</a>
+            <a href="#" id="sendBtn" @click="sendData">Request a Quote!</a>
         </div>
-    </div>`
+    </div>
+    <div v-else-if="routeView === 'thanksView'" id="thankyou-dialog">Thank you for your request {{customer.name | firstname}}! We'll get back to you shortly!</div>
+    `
 }
 
 
