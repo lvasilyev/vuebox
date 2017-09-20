@@ -28,15 +28,5 @@ new Vue({
                 'transition-duration': 1000 + 'ms'
             }
         }
-    },
-    template: `
-    <div class="viewport">
-        <ul class="gallery" :style="translateVal">
-            <li class="slide">1</li>
-            <li class="slide">2</li>
-            <li class="slide">3</li>
-            <li class="slide">4</li>     
-        </ul> 
- </div>
-    `
+    }
 });
