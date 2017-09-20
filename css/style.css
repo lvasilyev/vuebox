@@ -3,11 +3,16 @@
 }
 
 .viewport {
-    position: relative;
+    position: absolute;
     width: 320px;
     height: 240px;
     border: 1px solid black;
     overflow: hidden;
+    top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px;
+    margin: auto;
 }
 
 .gallery {
