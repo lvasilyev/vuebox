@@ -42,8 +42,6 @@ new Vue({
     <div id="container">
         <super-button @state="stateHandler" />
         <super-button  />
-        <super-button  />
-        <super-button  />
     </div>
     `
 })
