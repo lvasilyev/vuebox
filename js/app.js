@@ -2,68 +2,21 @@
 Vue.component('super-button', {
     data() {
         return {
-            enabled: false,
-            buttonState: 0,
-            blinkState: false,
-            ticktock: false
+            enabled: false
         }
-    },
-    created() {
-        setInterval(() => {
-            this.ticktock = !this.ticktock;
-        }, 800);
     },
     methods: {
         toggle() {
-            // If the button is blinking, first turn it off
-            if(this.blinkState) {
-                this.blinkState = false;
-                this.enabled = false;
-                this.buttonState = 0;
-                return;
-            }
-
-            // If the button is enabled, turn it off
-            // or else enable it.
-            if(!this.enabled) {
-                this.enabled = true;
-                this.buttonState = 1;
-            } else {
-                this.enabled = false;
-                this.buttonState = 0;
-            }
-        },
-        toggleBlink() {
-            if(!this.blinkState) {
-                this.enabled = false;
-                this.buttonState = 2;
-                this.blinkState = true;
-            }
-        }
-    },
-    watch: {
-        buttonState() {
-            this.$emit('buttonstate', this.buttonState);
+            this.enabled = !this.enabled;
+            this.$emit('state', this.enabled);
         }
     },
     computed: {
         buttonText() {
-            switch(this.buttonState) {
-                case 0: 
-                    return 'Off';
-                    break;
-                case 1:
-                    return 'On';
-                    break;
-                default: 
-                    return 'ALERT';
-            }
-        },
-        blinks() {
-            if(this.blinkState) {
-                return this.ticktock;
+            if(this.enabled) {
+                return 'On';
             } else {
-                return false;
+                return 'Off';
             }
         }
     },
@@ -72,25 +25,22 @@ Vue.component('super-button', {
         <a href="#" 
             :class="[
                 'btn', 
-                { 'btn-on' : enabled }, 
-                { 'btn-blink' : blinkState }, 
-                { 'btn-blink-off' : blinks }
+                { 'btn-on' : enabled }
             ]" 
-            @click.prevent="toggle"
-            @dblclick.prevent="toggleBlink">{{buttonText}}</a>
+            @click.prevent="toggle">{{buttonText}}</a>
     </div>`
 });
 
 new Vue({
     el: '#app',
     methods: {
-        useButton(ev) {
-            console.log(ev);
+        stateHandler(e) {
+            console.log(e);
         }
     },
     template: `
     <div id="container">
-        <super-button @buttonstate="useButton" />
+        <super-button @state="stateHandler" />
         <super-button  />
         <super-button  />
         <super-button  />
