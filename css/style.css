@@ -4,7 +4,7 @@
 
 .viewport {
     position: absolute;
-    width: 320px;
+    width: 640px;
     height: 240px;
     border: 1px solid black;
     overflow: hidden;
@@ -16,23 +16,15 @@
 }
 
 .gallery {
-    position: relative;
-    margin: 0px;
-    padding: 0px;
-    width: 400%;
+    position: absolute;
+    top: 0px;
     left: 0px;
-    transform: translate3d(0px, 0px, 0px);
-    transition: all 0.6ms;
+    width: 100%;
+    height: inherit;
+    transition: all 800ms;
 }
 
-.slide {
+.slides {
     position: relative;
-    width: 320px;
-    height: 240px;
-    background: rgba(0, 0, 0, 0.5);
-    list-style: none;
-    padding: 0px;
-    border: 1px solid red;
-    margin-right: 2px;
     float: left;
 }
