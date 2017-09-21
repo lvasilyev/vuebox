@@ -15,6 +15,7 @@ Vue.component('super-button', {
     },
     methods: {
         toggle() {
+            // If the button is blinking, first turn it off
             if(this.blinkState) {
                 this.blinkState = false;
                 this.enabled = false;
@@ -22,6 +23,8 @@ Vue.component('super-button', {
                 return;
             }
 
+            // If the button is enabled, turn it off
+            // or else enable it.
             if(!this.enabled) {
                 this.enabled = true;
                 this.buttonState = 1;
@@ -45,12 +48,15 @@ Vue.component('super-button', {
     },
     computed: {
         buttonText() {
-            if(this.buttonState === 0) {
-                return 'Off';
-            } else if(this.buttonState === 1) {
-                return 'On';
-            } else {
-                return 'ALERT';
+            switch(this.buttonState) {
+                case 0: 
+                    return 'Off';
+                    break;
+                case 1:
+                    return 'On';
+                    break;
+                default: 
+                    return 'ALERT';
             }
         },
         blinks() {
