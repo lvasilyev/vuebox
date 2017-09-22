@@ -35,7 +35,7 @@ Vue.component('multi-option', {
     props: ['config', 'value'],
     data() {
         return {
-            pickedValue: []
+            pickedValue: this.value
         }
     },
     watch: {
@@ -68,6 +68,9 @@ Vue.component('list-option', {
             }
 
             return yrs;
+        },
+        isSelected(year) {
+            return year === this.value;
         }
     },
     template: 
@@ -75,7 +78,7 @@ Vue.component('list-option', {
     <div class="form-field">
         <select @change="$emit('input', $event.target.value)">
             <option selected disabled>{{config.title}}</option>
-            <option v-for="year in generateSeq()">{{year}}</option>
+            <option v-for="year in generateSeq()" :selected="isSelected(year)">{{year}}</option>
         </select>
     </div>
     `
@@ -158,6 +161,8 @@ const App = {
     <div v-else-if="routeView === 'thanksView'" id="thankyou-dialog">Thank you for your request {{customer.name | firstname}}! We'll get back to you soon!</div>
     `
 }
+
+
 
 new Vue({
     el: '#app',
