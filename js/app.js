@@ -21,9 +21,18 @@ const places = [
 const RatingMeter = {
     name: 'rating-meter',
     props: ['value'],
+    computed: {
+        ratingStyle() {
+            if(this.value <= 2) {
+                return 'red';
+            } else if(this.value === 3) {
+                return 'orange';
+            }
+        }
+    },
     template: `
     <div class="rating-meter">
-        <div class="rating-block" v-for="x in value" />
+        <div :class="['rating-block', ratingStyle]" v-for="x in value" />
     </div>
     `
 }
