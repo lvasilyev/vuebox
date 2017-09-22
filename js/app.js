@@ -34,7 +34,7 @@ Vue.component('slideshow', {
     },
     methods: {
         runShow() {
-            if(this.galleryXPos !== this.maxSlide) {
+            if(this.galleryXPos !== this.maxSlideX) {
                 this.galleryXPos = this.galleryXPos - this.w;
             } else {
                 this.galleryXPos = 0;
