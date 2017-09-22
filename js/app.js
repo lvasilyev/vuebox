@@ -25,7 +25,7 @@ Vue.component('slideshow', {
         return {
             galleryXPos: 0,
             slideCount: 0,
-            maxSlide: 0
+            maxSlideX: 0
         }
     },
     mounted() {
@@ -45,7 +45,7 @@ Vue.component('slideshow', {
                 return item.elm.className === 'slides'
             }).length;
 
-            this.maxSlide = -(this.w * (this.slideCount - 1));
+            this.maxSlideX = -(this.w * (this.slideCount - 1));
         },
         getViewportSize() {
             return {
