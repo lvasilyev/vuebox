@@ -1,11 +1,6 @@
 // Your VueJS code goes here
 Vue.component('input-field', {
     props: ['name', 'value'],
-    data() {
-        return {
-            type: ''
-        }
-    },
     computed: {
         typeFn() {
             let types = [{
