@@ -44,4 +44,4 @@ new Vue({
         <super-button  />
     </div>
     `
-})
+});
