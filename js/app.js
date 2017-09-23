@@ -3,7 +3,7 @@ Vue.component('input-field', {
     props: ['name', 'value'],
     computed: {
         typeFn() {
-            let types = [{
+            const types = [{
                 typeName: 'text',
                 nameDict: ['Name', 'Address']
             }, {
@@ -25,10 +25,12 @@ Vue.component('input-field', {
             }
         }
     },
-    template: `
+    template:
+    `
     <div class="form-field">
-        <input :type="typeFn" :placeholder="name" :value="value" @input="$emit('input', $event.target.value)">
-    </div>`
+        <input :type="typeFn" :value="value" :placeholder="name" @input="$emit('input', $event.target.value)">
+    </div>
+    `
 });
 
 Vue.component('multi-option', {
@@ -39,11 +41,11 @@ Vue.component('multi-option', {
         }
     },
     watch: {
-        pickedValue: function() {
+        pickedValue() {
             this.$emit('input', this.pickedValue);
         }
     },
-    template: 
+    template:
     `
     <div class="form-field">
         <h4>{{config.name}}</h4>
@@ -107,7 +109,7 @@ const App = {
                 contactMode: {
                     type: 'checkbox',
                     name: 'Contact Mode',
-                    opts: ['E-Mail', 'Phone', 'Post', 'Agent Visit']
+                    opts: ['E-Mail', 'Phone', 'Post', 'Rep. Visit']
                 },
                 yearOfPurchase: {
                     title: 'Year of Purchase',
@@ -116,20 +118,8 @@ const App = {
             }
         }
     },
-    computed: {
-        validate() {
-            return Object.keys(this.customer).every(k => {
-                    if(this.customer[k] instanceof Array) {
-                    return this.customer[k].length !== 0;
-                    } else {
-                    return this.customer[k] !== '';
-                    }
-              });
-        }
-    },
     methods: {
         sendData() {
-            // Send data to the server
             console.log(this.customer);
             this.routeView = 'thanksView';
         }
@@ -139,7 +129,19 @@ const App = {
             return str.split(/\s/)[0];
         }
     },
-    template: `
+    computed: {
+        validate() {
+            return Object.keys(this.customer).every(k => {
+                if(this.customer[k] instanceof Array) {
+                    return this.customer[k].length !== 0;
+                } else {
+                    return this.customer[k] !== '';
+                }
+            });
+        }
+    },
+    template: 
+    `
     <div v-if="routeView === 'formView'">
         <input-field name="Name" v-model="customer.name" />
         <div class="separator" />
@@ -147,26 +149,27 @@ const App = {
         <div class="separator" />
         <input-field name="Phone" v-model="customer.phone" />
         <div class="separator" />
-        <multi-option :config="config.typeOfCar" v-model="customer.carType"/>
+        <multi-option :config="config.typeOfCar" v-model="customer.carType" />
         <div class="separator" />
-        <multi-option :config="config.contactMode" v-model="customer.contactMode"/>
+        <multi-option :config="config.contactMode" v-model="customer.contactMode" />
         <div class="separator" />
         <input-field name="Car Model" v-model="customer.carModel" />
         <div class="separator" />
-        <list-option :config="config.yearOfPurchase" v-model="customer.yearOfPurchase"/>
+        <list-option :config="config.yearOfPurchase" v-model="customer.yearOfPurchase" />
         <div class="form-field">
             <a href="#" id="sendBtn" @click="sendData" v-if="validate">Request a Quote!</a>
         </div>
     </div>
-    <div v-else-if="routeView === 'thanksView'" id="thankyou-dialog">Thank you for your request {{customer.name | firstname}}! We'll get back to you soon!</div>
+
+    <div id="thankyou-dialog" v-else-if="routeView === 'thanksView'">Thank you for your request {{customer.name | firstname}}! We'll get back to you soon!</div>
     `
 }
 
-
-
 new Vue({
     el: '#app',
-    components: { App },
+    components: {
+        App
+    },
     template: 
     `<div id="container">
         <div class="title-holder">Sales Quote Request</div>
