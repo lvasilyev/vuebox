@@ -118,13 +118,13 @@ const App = {
     },
     computed: {
         validate() {
-            return this.customer.name !== ''
-                && this.customer.email !== ''
-                && this.customer.phone !== ''
-                && this.customer.carType !== ''
-                && this.customer.carModel !== ''
-                && this.customer.contactMode.length !== 0
-                && this.customer.yearOfPurchase !== ''
+            return Object.keys(this.customer).every(k => {
+                    if(this.customer[k] instanceof Array) {
+                    return this.customer[k].length !== 0;
+                    } else {
+                    return this.customer[k] !== '';
+                    }
+              });
         }
     },
     methods: {
