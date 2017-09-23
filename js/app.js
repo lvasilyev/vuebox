@@ -14,7 +14,7 @@ const places = [
     }, {
         id: 5,
         name: 'F Bar',
-        rating: 4
+        rating: 5
     }
 ];
 
@@ -25,7 +25,7 @@ const RatingMeter = {
         ratingStyle() {
             if(this.value <= 2) {
                 return 'red';
-            } else if(this.value === 3) {
+            } else if(this.value > 2 && this.value < 5) {
                 return 'orange';
             }
         }
