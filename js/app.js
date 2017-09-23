@@ -13,35 +13,35 @@ Vue.component('super-button', {
     },
     computed: {
         buttonText() {
-            if(this.enabled) {
-                return 'On';
-            } else {
-                return 'Off';
-            }
+            return this.enabled ? 'On' : 'Off';
         }
     },
-    template: 
-    `<div class="button">
+    template:
+    `
+    <div class="button">
         <a href="#" 
             :class="[
-                'btn', 
+                'btn',
                 { 'btn-on' : enabled }
-            ]" 
+            ]"
             @click.prevent="toggle">{{buttonText}}</a>
-    </div>`
+    </div>
+    `
 });
 
 new Vue({
     el: '#app',
     methods: {
-        stateHandler(e) {
+        buttonHandler(e) {
             console.log(e);
         }
     },
-    template: `
+    template:
+    `
     <div id="container">
-        <super-button @state="stateHandler" />
-        <super-button  />
+        <super-button @state="buttonHandler" />
+        <super-button />
+        <super-button />
     </div>
     `
 });
