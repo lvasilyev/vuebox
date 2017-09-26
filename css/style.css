@@ -2,31 +2,58 @@
     font-family: sans-serif;
 }
 
-.viewport {
+.currency-convertor {
     position: absolute;
-    width: 640px;
-    height: 240px;
-    border: 1px solid black;
-    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    width: 440px;
+    height: 200px;
     top: 0px;
-    left: 0px;
     bottom: 0px;
+    left: 0px;
     right: 0px;
     margin: auto;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-.gallery {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: inherit;
-    transition: all 800ms;
-}
-
-.slides {
+.section {
     position: relative;
-    float: left;
-    background-size: cover;
-    background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.1);
+    height: 92px;
+    margin: 5px;
+    border-radius: 8px;
+}
+
+.currency-symbol {
+    position: absolute;
+    border-right: 1px solid;
+    width: 155px;
+    height: 92px;
+    background-color: #FFFFFF;
+    overflow: hidden;
+}
+
+.currency-symbol select {
+    position: relative;
+    font-size: 40px;
+    width: 150px;
+    height: 92px;
+    display: inline-block;
+    border: none;
+    outline: none;
+}
+
+.currency-value {
+    position: absolute;
+    left: 156px;
+}
+
+.currency-value input {
+    font-size: 40px;
+    padding: 9px;
+    height: 70px;
+    width: 250px;
+    background-color: transparent;
+    border: none;
+    outline: none;
 }
