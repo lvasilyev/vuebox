@@ -5,7 +5,7 @@
 .currency-convertor {
     position: absolute;
     border: 1px solid rgba(0, 0, 0, 0.5);
-    width: 440px;
+    width: 640px;
     height: 200px;
     top: 0px;
     bottom: 0px;
@@ -52,7 +52,7 @@
     font-size: 40px;
     padding: 9px;
     height: 70px;
-    width: 250px;
+    width: 450px;
     background-color: transparent;
     border: none;
     outline: none;
