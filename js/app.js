@@ -1,36 +1,9 @@
 // Your VueJS code goes here
-const CurrencyInput = {
-    name: 'currency-input',
-    props: ['value', 'symbol'],
-    data() {
-        return {
-            symbols: ['INR', 'USD', 'GBP', 'EUR']
-        }
-    },
-    methods: {
-        isSelected(val) {
-            return val === this.symbol;
-        }
-    },
-    template:
-    `
-    <div class="section">
-        <div class="currency-symbol">
-            <select @change="$emit('symChanged', $event.target.value)">
-                <option v-for="sym in symbols" :selected="isSelected(sym)">{{sym}}</option>
-            </select>
-        </div>
-        <div class="currency-value">
-            <input type="number" min="0" :value="value" @input="$emit('input', $event.target.value)" @focus="$emit('focus')">
-        </div>
-    </div>
-    `
-}
-
 const CurrencyConvertor = {
     name: 'currency-convertor',
     data() {
         return {
+            symbolsArray: ['INR', 'USD', 'GBP', 'EUR'],
             symbols: {
                 first: 'USD',
                 second: 'INR'
@@ -42,9 +15,6 @@ const CurrencyConvertor = {
             conversionRate: 0,
             firstActive: true
         }
-    },
-    components: {
-        CurrencyInput
     },
     created() {
         this.getRate();
@@ -62,33 +32,39 @@ const CurrencyConvertor = {
             } else {
                 this.inputValue.first = (this.inputValue.second / this.conversionRate).toFixed(4);
             }
-        },
-        symChanged(sym) {
-            this.symbols[sym] = event.target.value;
-            this.getRate();
-        },
-        inputValChanged(val) {
-            this.inputValue[val] = event.target.value;
-            this.convert();
         }
     },
     template:
     `
     <div class="currency-convertor">
-        <currency-input 
-            :value="inputValue.first"
-            :symbol="symbols.first" 
-            @input="inputValChanged('first')"
-            @focus="firstActive = true" 
-            @symChanged="symChanged('first')"
-        />
-        <currency-input 
-            :value="inputValue.second"
-            :symbol="symbols.second" 
-            @input="inputValChanged('second')"
-            @focus="firstActive = false" 
-            @symChanged="symChanged('second')"
-        />
+        <div class="section">
+            <div class="currency-symbol">
+                <select v-model="symbols.first" @change="getRate()">
+                    <option v-for="sym in symbolsArray">{{sym}}</option>
+                </select>
+            </div>
+            <div class="currency-value">
+                <input type="number" min="0" value="0" 
+                    v-model="inputValue.first"
+                    @input.lazy="convert()"
+                    @focus="firstActive = true"
+                >
+            </div>
+        </div>
+        <div class="section">
+            <div class="currency-symbol">
+                <select v-model="symbols.second" @change="getRate()">
+                    <option v-for="sym in symbolsArray">{{sym}}</option>
+                </select>
+            </div>
+            <div class="currency-value">
+                <input type="number" min="0" value="0" 
+                    v-model="inputValue.second"
+                    @input.lazy="convert()"
+                    @focus="firstActive = false"
+                >
+            </div>
+        </div>
     </div>
     `
 }
