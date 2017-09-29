@@ -3,6 +3,7 @@ const CurrencyConvertor = {
     name: 'currency-convertor',
     data() {
         return {
+            isLoading: true,
             symbolsArray: ['INR', 'USD', 'GBP', 'EUR', 'CAD'],
             symbols: {
                 first: 'USD',
@@ -21,11 +22,13 @@ const CurrencyConvertor = {
     },
     methods: {
         getRate() {
+            this.isLoading = true;
             let {first, second} = this.symbols;
 
             $.getJSON(`https://api.fixer.io/latest?base=${first}&symbols=${second}`, res => {
                 this.conversionRate = res.rates[second] || 1.000;
                 this.convert();
+                this.isLoading = false;
             });
         },
         convert() {
@@ -47,8 +50,8 @@ const CurrencyConvertor = {
             </div>
             <div class="currency-value">
                 <input type="number" min="0" value="0" 
-                    v-model="inputValue.first"
-                    @input.lazy="convert()"
+                    v-model.number="inputValue.first"
+                    @input="convert()"
                     @focus="firstActive = true"
                 >
             </div>
@@ -61,12 +64,13 @@ const CurrencyConvertor = {
             </div>
             <div class="currency-value">
                 <input type="number" min="0" value="0" 
-                    v-model="inputValue.second"
-                    @input.lazy="convert()"
+                    v-model.number="inputValue.second"
+                    @input="convert()"
                     @focus="firstActive = false"
                 >
             </div>
         </div>
+        <div id="cover" v-if="isLoading"></div>
     </div>
     `
 }
