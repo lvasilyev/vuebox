@@ -3,7 +3,7 @@ const CurrencyConvertor = {
     name: 'currency-convertor',
     data() {
         return {
-            symbolsArray: ['INR', 'USD', 'GBP', 'EUR'],
+            symbolsArray: ['INR', 'USD', 'GBP', 'EUR', 'CAD'],
             symbols: {
                 first: 'USD',
                 second: 'INR'
