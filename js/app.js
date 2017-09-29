@@ -21,8 +21,10 @@ const CurrencyConvertor = {
     },
     methods: {
         getRate() {
-            $.getJSON(`https://api.fixer.io/latest?base=${this.symbols.first}&symbols=${this.symbols.second}`, json => {
-                this.conversionRate = json.rates[this.symbols.second] || 1.000;
+            let {first, second} = this.symbols;
+
+            $.getJSON(`https://api.fixer.io/latest?base=${first}&symbols=${second}`, res => {
+                this.conversionRate = res.rates[second] || 1.000;
                 this.convert();
             });
         },
