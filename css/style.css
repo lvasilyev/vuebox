@@ -72,6 +72,10 @@ input {
     outline: none;
 }
 
+.multi-option input {
+    width: 15px;
+}
+
 select {
     position: relative;
     width: 395px;
