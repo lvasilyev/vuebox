@@ -72,6 +72,10 @@ input {
     outline: none;
 }
 
+.multi-option input {
+    width: 15px;
+}
+
 select {
     position: relative;
     width: 395px;
@@ -109,4 +113,19 @@ select {
     background-color: #B19036;
     margin-top: 30px;
     border-radius: 5px;
+}
+
+#thankyou-dialog {
+    position: relative;
+    background-color: #FFC400;
+    height: 537px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    text-align: center;
+    vertical-align: middle;
+    display: table-cell;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-sizing: content-box;
+    font-size: 22px;
 }
