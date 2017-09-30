@@ -7,10 +7,10 @@ const vm = new Vue({
         }
     },
     methods: {
-        greetMe() {
-            this.greeting = `Hello! ${event.target.value}`;
+        greetMe(event) {
+             this.greeting = `Hello! ${event.target.value}`;
         },
-        clearOut() {
+        clearOut(event) {
             event.target.value = '';
         }
     }
