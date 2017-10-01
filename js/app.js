@@ -32,8 +32,10 @@ Vue.component('slideshow', {
         }
     },
     mounted() {
-        this.getSlideCount();
-        setInterval(this.runShow, 4000);
+        this.$nextTick(() => {
+            this.getSlideCount();
+            setInterval(this.runShow, 4000);
+        });
     },
     methods: {
         runShow() {
