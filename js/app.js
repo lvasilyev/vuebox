@@ -24,11 +24,14 @@ Vue.component('currency-convertor', {
             this.isLoading = true;
             let {first, second} = this.symbols;
 
-            $.getJSON(`https://api.fixer.io/latest?base=${first}&symbols=${second}`, res => {
-                this.conversionRate = res.rates[second] || 1.000;
-                this.convert();
-                this.isLoading = false;
-            });
+            axios.get(`https://api.fixer.io/latest?base=${first}&symbols=${second}`)
+                .then(res => {
+                    this.conversionRate = res.data.rates[second] || 1.000;
+                    this.convert();
+                    this.isLoading = false;
+                });
+
+            
         },
         convert() {
             if(this.firstActive) {
