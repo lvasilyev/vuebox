@@ -24,20 +24,23 @@ Vue.component('currency-convertor', {
             this.isLoading = true;
             let {first, second} = this.symbols;
 
-            axios.get(`https://api.fixer.io/latest?base=${first}&symbols=${second}`)
-                .then(res => {
-                    this.conversionRate = res.data.rates[second] || 1.000;
-                    this.convert();
-                    this.isLoading = false;
-                });
-
-            
+            axios.get('https://api.fixer.io/latest', {
+                params: {
+                    base: first,
+                    symbols: second
+                }
+            })
+            .then(res => {
+                this.conversionRate = res.data.rates[second] || 1.0;
+                this.convert();
+                this.isLoading = false;
+            });
         },
         convert() {
             if(this.firstActive) {
-                this.inputValue.second = (this.inputValue.first * this.conversionRate).toFixed(4);
+                this.inputValue.second = (this.inputValue.first * this.conversionRate).toFixed(3);
             } else {
-                this.inputValue.first = (this.inputValue.second / this.conversionRate).toFixed(4);
+                this.inputValue.first = (this.inputValue.second / this.conversionRate).toFixed(3);
             }
         }
     },
