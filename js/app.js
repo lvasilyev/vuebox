@@ -1,6 +1,5 @@
 // Your VueJS code goes here
-const CurrencyConvertor = {
-    name: 'currency-convertor',
+Vue.component('currency-convertor', {
     data() {
         return {
             isLoading: true,
@@ -73,12 +72,9 @@ const CurrencyConvertor = {
         <div id="cover" v-if="isLoading"></div>
     </div>
     `
-}
+});
 
 new Vue({
     el: '#app',
-    components: {
-        CurrencyConvertor
-    },
     template: '<currency-convertor />'
 });
