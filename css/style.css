@@ -2,3 +2,82 @@
     font-family: sans-serif;
 }
 
+.weather-app {
+    position: absolute;
+    width: 550px;
+    border: 1px solid;
+    height: 564px;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.search {
+    position: relative;
+    background: #333333;
+    height: 80px;
+}
+
+.search input {
+    position: absolute;
+    padding: 20px;
+    width: 506px;
+    font-size: 22px;
+    outline: none;
+    top: 1px;
+}
+
+.search-results {
+    position: absolute;
+    padding: 0px;
+    margin: 0px;
+    top: 70px;
+    /* height: 40px; */
+    max-height: 150px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    border-bottom: 1px solid grey;
+    z-index: 1;
+}
+
+.search-results > li {
+    padding: 10px;
+    background-color: rgba(255, 235, 205, 1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    width: 512px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.search-results > li:hover {
+    background-color: #F0C78E;
+}
+
+.cards {
+    position: relative;
+    width: 550px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: 485px;
+}
+
+.card {
+    position: relative;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.5);
+    height: 120px;
+    /* background-color: rgba(255, 0, 0, 0.1); */
+}
+
+.remove-btn {
+    position: absolute;
+    color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+    font-size: 10px;
+    padding: 5px;
+    background-color: rgba(0, 0, 0, 0.1);
+    right: 10px;
+    top: 50px;
+}
