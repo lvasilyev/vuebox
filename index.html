@@ -7,19 +7,26 @@
     <title>Getting Started with VueJS - VueBox</title>
     <link rel="stylesheet" href="css/style.css">
     <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>   
 </head>
 <body>
     <div id="app">
         <div class="weather-app">
             <div class="search">
                 <input type="text" placeholder="Search for a location...">
-                <!-- <ul class="search-results">
+                <ul class="search-results">
                     <li>Chandigarh</li>   
-                </ul> -->
+                </ul>
             </div>
             <div class="cards">
-                <div class="card">
+                <div class="card night">
+                    <span class="temperature">30&#176;</span>
+                    <div class="location">New Delhi, India</div>
+                    <div class="conditions">Cloudy with a chance of rain</div>
+                    <img class="icon" src="" />
                     <a href="#" class="remove-btn">X</a>
+                    <div class="loading"></div>
                 </div>
             </div>
         </div>
