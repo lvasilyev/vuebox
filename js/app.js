@@ -10,7 +10,7 @@ Vue.component('search-box', {
     },
     methods: {
         searchLoc(event) {
-            _.debounce(((event) => {
+            _.debounce((event => {
                 if(event.target.value) {
                     axios.get('https://api.apixu.com/v1/search.json', {
                         params: {
@@ -26,7 +26,7 @@ Vue.component('search-box', {
                         this.showResults = false;
                     });
                 }
-            }).bind(this), 500)(event);
+            }).bind(this), 1000)(event);
         },
         emitLocation(loc) {
             this.$emit('addLocation', loc);
