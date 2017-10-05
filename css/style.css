@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300');
 
+body {
+    background-color: rgb(243, 243, 243);
+}
+
 * {
     font-family: 'Open Sans', sans-serif;
 }
@@ -7,7 +11,7 @@
 .weather-app {
     position: absolute;
     width: 550px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.5);
     height: 564px;
     top: 0px;
     bottom: 0px;
@@ -15,6 +19,7 @@
     right: 0px;
     margin: auto;
     overflow: hidden;
+    background-color: #fff;
 }
 
 .search {
