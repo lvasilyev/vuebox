@@ -52,8 +52,7 @@ Vue.component('multi-option', {
         <div class="multi-option" v-for="(n, key) in config.opts" :key="key">
             <div class="label">{{n}}</div>
             <div class="field">
-                <input type="radio" :value="n" v-model="pickedValue" v-if="config.type === 'radio'">
-                <input type="checkbox" :value="n" v-model="pickedValue" v-else-if="config.type === 'checkbox'">
+                <input :type="config.type" :value="n" v-model="pickedValue">
             </div>
         </div>
     </div>
