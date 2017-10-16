@@ -9,7 +9,7 @@ Vue.component('warn', {
                 <slot name="message">Success!</slot>
             </span>
             <span class="warn-records">
-                <strong><slot name="records">No</slot> records were updated!</strong>
+                <slot name="records">No</slot> records were updated!
             </span>
             <a href="#" class="cancel-btn" @click="$emit('close')">X</a>
         </div>
