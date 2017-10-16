@@ -10,8 +10,16 @@
 </head>
 <body>
     <div id="app">
-        
-        
+        <div class="warning">
+            <span class="warn-text">
+                Processing Successful!
+            </span>
+            <span class="warn-records">
+                <strong>10 records were updated!</strong>
+            </span>
+            <a href="#" class="cancel-btn" @click="$emit('close')">X</a>
+        </div>
+        <a href="#" class="remove-btn">Remove Data!</a>
     </div>
     
     <script src="js/app.js"></script>
