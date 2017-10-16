@@ -6,7 +6,7 @@ Vue.component('warn', {
     <transition name="warn-transition">
         <div class="warning" v-if="show">
             <span class="warn-text">
-                <slot name="message"></slot>
+                <slot name="message">Success!</slot>
             </span>
             <span class="warn-records">
                 <strong><slot name="records">No</slot> records were updated!</strong>
