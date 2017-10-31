@@ -2,7 +2,7 @@
 const InputField = {
     name: 'input-field',
     props: ['value'],
-    template: '<input type="number" min="0" :value="value" @change="update" @keyup="update">',
+    template: '<input type="number" min="0" :value="value" @input="update">',
     methods: {
         update(event) {
             this.$emit('update:value', Number(event.target.value));
